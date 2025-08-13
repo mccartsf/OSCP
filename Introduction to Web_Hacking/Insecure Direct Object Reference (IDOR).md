@@ -46,3 +46,5 @@ If the Id cannot be detected using the above methods, an excellent method of ID
 
 Ex. 
 You may notice a call to **/user/details** displaying your user information (authenticated through your session). But through an attack known as parameter mining, you discover a parameter called **user_id** that you can use to display other users' information, for example, **/user/details?user_id=123**.
+
+Test.
