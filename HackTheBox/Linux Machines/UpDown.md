@@ -87,6 +87,31 @@ Allow from env=Required-Header
 
 # Foothold
 
+With our newly found header information we can try sending a new HTTP GET request with the updated header information using BurpSuite:
+
+![](Pasted%20image%2020260727152554.png)
+
+As a result, we are able to access the previously restricted dev site:
+
+
+![](Pasted%20image%2020260727152649.png)
+
+
+The dev site shows the changelog.txt file on the homepage and also includes a hyperlink to an admin panel. 
+
+Upon reading the changelog.txt file we find some notes regarding changes that were going to be implemented on the site. These changes may aid in helping grant a foothold on the machine.
+
+Ex. 
+
+"Beta version
+
+1- Check a bunch of websites.
+
+-- ToDo:
+
+1- Multithreading for a faster version :D.
+2- Remove the upload option.
+3- New admin panel.
 
 # Privilege Escalation
 
