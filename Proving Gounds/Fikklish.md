@@ -12,12 +12,13 @@ A vulnerability in Weblate 4.11 will be exploited to establish an initial footho
 
 Privilege Escalation
 - Remote Code Execution
-- Credential Discovery'
+- Credential Discovery
 - Web App Exploitation
 ## Used Tools 
 
-- Nmap 
-
+- Nmap
+- Gobuster
+- Git
 # Information Gathering 
 
 Nmap Scans:
