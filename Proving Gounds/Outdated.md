@@ -90,7 +90,66 @@ From here, we are going to try testing other available files that were found on 
 
 Config path -> /var/www/html/config
 
+
+Under the file, "config.php" we can find a set of password and usernames that we can test on the target IP using SSH
+
+For example:
+
+$username = "svc-account";
+$password = "best&_#Password@2021!!!";
+
+
+		ssh svc-account@192.168.120.232
+
+With the above login, we are able to successfully login to the "outdated" machine. 
+
+In the home directory we find our first user flag in the local.txt file:
+
+==best&_#Password@2021!!!==
+
+
 # Privilege Escalation
+
+
+Now that we have a foothold on the local server, we can escalate our privilege using the Webmin portal. 
+
+After checking the currently available ports, we can see that port 10000 is open. 
+
+Using curl we get short response letting us know that there is an HTML file currently available on this port. 
+
+To view this available file we use a port forward to view this on our localhost:
+
+		ssh -fN -L 10000:localhost:10000 svc-account@192.168.213.232
+
+Now, we can visit, https://localhost:10000 to view the website.
+
+https://localhost:10000 opens to a Webmin account login, which we can access using the credentials we used for the original server login:
+
+$username = "svc-account";
+$password = "best&_#Password@2021!!!";
+
+With success, we are able to enter into the Webmin portal!
+
+Upon searching through the portal, it appears we have the ability to change passwords on the available services running, including root. 
+
+To access a root shell, we change the root password to "root" and try an ssh login with the newly created credentials:
+
+$username = "root";
+$password = "root
+
+		ssh root@192.168.120.232
+
+Success! We have gotten a root shell and find the final root flag:
+
+root@outdated:/home/svc-account# ls
+local.txt
+root@outdated:/home/svc-account# cd ..
+root@outdated:/home# cd ..
+root@outdated:/# cd /root/
+root@outdated:~# ls
+app  index.html  proof.txt  snap  webmin_1.996_all.deb
+root@outdated:~# cat proof.txt 
+==278ce5b5ee8d0e51ee1f5b4d52764132==
 
 
 
