@@ -76,8 +76,19 @@ FuguHub version 8.4 is directly vulnerable to remote code execution (RCE). An ex
 
 # Foothold
 
+Using the available Lua script on the exploit site, we navigate to the "CMS Admin" and create a new page under the "Page Manager." The title of the page is not directly import, but the URI should include a "/", for example:
 
-# Privilege Escalation
+	/Attack Page
+
+Once the page is created, we reload the site and navigate to the newly created tab on the Home Page. Inside the newly created page, we choose to "edit" the page and turn on "expert" & "enable LSP."
+
+To gain access we attempt to place the Sploitus code with our local host and port combination with a net cat listener and click "save."
+
+With success, we achieve a reverse root shell and find the root flag in the root folder:
+		cat /root/proof.txt
+
+Flag -> ==1400207fd92a809c64088b690aee27af==
+# 
 
 
 
