@@ -66,8 +66,8 @@ Open ports available ==22,80==
 
 When visiting the target IP we are met on a CODOLOGIC homepage with a login screen. Using a social engineering attempt we are able to gain access with a common username/password combo:
 
-username: admin
-password: admin
+	username: admin
+	password: admin
 
 
 Since we are logged into the "admin" account, we are able to access the subdomain "admin." This page allows us to enter into the backend of the HTML site with more detailed information. 
@@ -84,7 +84,7 @@ exploitDB script -> https://www.exploit-db.com/exploits/50978
 
 After running the exploit we do not received any feedback from the server. Since there was no response, we perform more research on available vulnerabilities. 
 
-With luck, we find a CVE posted that mentions that the "logo" upload on the global settings page is directly vulnerable to malicious php code as there is no server side checks.
+With luck, we find a CVE posted that mentions that the "logo" upload on the global settings page is directly vulnerable to malicious php code as there is no server side checks. This CVE can be found on SentinelOne -> https://www.sentinelone.com/vulnerability-database/cve-2022-31854/
 
 To perform this vulnerability we create a file, "example.php" with a reverse shell payload created on RevShells (https://www.revshells.com/), that will allow us entrance into the machine. 
 
@@ -94,9 +94,46 @@ Ex.
 
 # Foothold
 
+Now that we have a payload uploaded to the website, we must start a remote listener and activate the reverse shell payload. 
 
+Listener Command:
+		nc -lvnp 9001
+
+
+To active that payload, we need to access the site page where the file was directly uploaded. In this case, the file gets uploaded directly to 
+
+		http://192.168.220.23/sites/default/assets/img/attachments/
+
+If we visit this link and add our payload file we successfully gain access to the "codo" server.
 # Privilege Escalation
 
+As logged in user, "www-date" on @codo, we begin to search through the availble files for privilege escalation.
+
+Luckily, there is a config.php file under the default site page that contains a username/password combination for escalation.
+
+		/var/www/html/sites/default/config.php
+
+	username: codo
+	password: FatPanda123
 
 
+With the available combo we try switching the user profile to the root user with the given password.
 
+		su root
+		
+Success! We have gained root access on the machine:
+
+		su root
+		Password: FatPanda123
+		pwd
+		/var/www/html/sites/default
+		whoami
+		root
+		cd /root
+		ls
+		email2.txt
+		proof.txt
+		snap
+		cat proof.txt
+		
+==8516aac2a0d6aad3602451d8d03ad078==
