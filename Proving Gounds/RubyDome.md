@@ -93,7 +93,16 @@ In the /home/andrew/ directory, we find our first user flag in the, "local.txt" 
 
 # Privilege Escalation
 
+Checking the super user privileges and commands we find that the andrew user is able to run a Ruby file called, "app.rb" with the sudo command. 
 
+Using this knowledge we change the contents of the app.rb file to open a reverse shell for us and then activate the SUID bit to run the command as a root user. For example:
+
+		chmod +s app.rb
+		echo 'exec "/bin/bash/"' /usr/bin/ruby /home/andrew/app/app.rb
+
+with the above commands we are able to escalate our privilege to the root user and find the root flag in the /root directory in proof.txt.
+
+We have successfully solve the lab!
 
 
 
