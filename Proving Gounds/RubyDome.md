@@ -102,7 +102,7 @@ Using this knowledge we change the contents of the app.rb file to open a reverse
 
 with the above commands we are able to escalate our privilege to the root user and find the root flag in the /root directory in proof.txt.
 
-We have successfully solve the lab!
+We have successfully solved the lab!
 
 
 
