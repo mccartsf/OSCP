@@ -10,7 +10,7 @@ This lab exploits a Remote Code Execution (RCE) vulnerability in GLPI 10.0.2 (CV
 - Extract database credentials from the config_db.php file and use them to retrieve user passwords.
 - SSH into the target as the betty user using extracted credentials.
 - Exploit the writable Jetty server webapps folder to deploy a crafted XML configuration for a reverse shell, escalating to root access.
-# Service Enumeration
+# Information Gathering
 
 Nmap Scan results:
 Starting Nmap 7.99 ( https://nmap.org ) at 2026-09-18 23:11 -0400
@@ -87,7 +87,7 @@ plugins              (Status: 301) [Size: 320] [--> http://192.168.165.242/plugi
 
 
 
-# Information Gathering 
+# Service Enumeration 
 
 
 # Privilege Escalation
