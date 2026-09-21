@@ -85,6 +85,7 @@ bin                  (Status: 301) [Size: 316] [--> http://192.168.165.242/bin/]
 inc                  (Status: 301) [Size: 316] [--> http://192.168.165.242/inc/]
 plugins              (Status: 301) [Size: 320] [--> http://192.168.165.242/plugins/]
 
+Using the gobuster results, we can begin to search through the used website index to properly find a potential vulnerability in the GLPI login page. Additionally, it is worth researching any available vulnerabilities on exploitDB and other sources.
 
 
 # Service Enumeration 
