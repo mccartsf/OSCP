@@ -156,4 +156,38 @@ Success, we are able to login and can now find our first flag in the home direct
 ==71742999d3e5e9809c8481419932d8c2==
 # Privilege Escalation
 
-Test
+Now that we have a good foothold, we can start to escalate our privileges.
+
+After some file enumeration we find an available webserver being hosted with Jetty that could potentially be exploited. 
+
+To perform the exploit, we first need to forward the port on our localhost:
+
+		ssh -L 1234:localhost:8080 betty@192.168.XXX.XXX
+
+
+Jetty is vulnerable to remote code execution (RCE) as explained here -> https://x.com/ptswarm/status/1555184661751648256?lang=en
+
+There is a linked Github with some additional exploit code found at this link -> https://github.com/Mike-n1/tips/blob/main/JettyShell.xml?source=post_page-----555ce2d9234e-----------------------------------------
+
+
+Moving forward, we now attempt to add the RCE code that will make the exploit work. 
+
+1st - we will create a root.sh file in the tmp directory to be called on
+	
+		echo "chmod +s /bin/bash" > /tmp/root.sh
+
+2nd - Modify the root.sh file to be executable 
+
+		cmod +x /tmp/root.sh
+
+3rd - Create an uploadable .xml file for the exploit and paste the exploit code from the GitHub into the xml file
+
+4th - Run the code in privileged mode
+
+		bash -p
+
+With success, we are able to achieve a root shell. The root flag can be found in the /root/proof.txt file:
+
+==b4babaecece1e07df0e0d91b5fa2eacb==
+
+Success, we have solved the machine!
