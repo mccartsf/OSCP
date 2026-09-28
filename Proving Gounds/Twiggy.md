@@ -184,5 +184,4 @@ With success, the file is directly uploaded! Now all that is left to do is login
 
 Success! We have gotten a root shell and can find the root flag in the proof.txt file.
 
-We have successfully solved the machine
-# Privilege Escalation
+We have successfully solved the machine.
