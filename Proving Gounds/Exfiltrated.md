@@ -12,6 +12,8 @@ In this lab, the attacker exploits the target through an authenticated file uplo
 
 # Information Gathering 
 
+Nmap Scan Results:
+
 
 # Service Enumeration
 
