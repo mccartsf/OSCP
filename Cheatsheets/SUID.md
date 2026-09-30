@@ -1,7 +1,11 @@
 
 Find all available SUID files in the system
 
-		find / -perm -u=s -type f 2>/dev/null
+	find / -type f -perm -4000 2>/dev/null
+
+Another Ex.
+
+	find / -perm -u=s -type f 2>/dev/null
 
 Flag Descriptions:
 
@@ -10,9 +14,10 @@ Flag Descriptions:
 - -type f: search for regular file
 - 2>dev/null: errors will be deleted automatically
 
-Another Example:
 
-		find / -type f -perm -4000 2>/dev/null
+
+
+
 
 
 
