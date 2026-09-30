@@ -12,5 +12,9 @@
 	- [ ] Is there any website software versions information available? 
 	- [ ] Does the subdomain contain any *config* files or directories? 
 
+## Enumeration
+
+- [ ] 
+
 
 
