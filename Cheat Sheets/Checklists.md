@@ -14,7 +14,7 @@
 
 ## Enumeration
 
-- [ ] 
+- [ ] With the available port information, run commands in the "available port" cheat sheet for any available connections
 
 
 
