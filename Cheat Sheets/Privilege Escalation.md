@@ -1,4 +1,6 @@
 
+## SUID 
+
 Find all available SUID files in the system
 
 	find / -type f -perm -4000 2>/dev/null
@@ -15,7 +17,11 @@ Flag Descriptions:
 - 2>dev/null: errors will be deleted automatically
 
 
+## Cron Jobs
 
+Find all available running cron jobs
+
+	cat /etc/cron
 
 
 
