@@ -103,3 +103,38 @@ Successfully, we are able to get a foothold shell as the user, "Charles" when co
 
 The local.txt file can be found in the /home directory for our first flag.
 # Privilege Escalation
+
+Now that we have a foothold, we are going to run through common areas to find an opening for our privilege escalation. 
+
+Starting with searching for files with the SUID bit set, we search using:
+
+	find / -type f -perm -4000 2>/dev/null
+
+In addition, we check to see if we are able to run the *sudo* command with the Charles account:
+
+	sudo -l
+
+As Charles we are able to run the *gcore* command, this will be our opening for escalation.
+
+After some open research on GTFOBins and Google, we find that gcore can dump information from memory of running processes. To check on the available running processes, we run the belwo command  for any processes running as root:
+
+	ps -ef | grep root
+
+In the list of file output, one file stands out more than others, "/usr/bin/pssword-store."
+
+Using the *sudo gcore* command we can output the information in memory to a file:
+
+	sudo gcore -o exploit 494
+
+Now, we use the *strings* command to parse the file for any readable information stored and specifically search for anything related to passwords or secrets:
+
+	strings output.494 | grep -IE 'password|passwd|secret'
+
+
+With success, we find some information that reads, "001: Password: root: ClogKingpingInning731"
+
+We can try this login by switching to the root user on the current working machine:
+
+	su root
+
+Success, we have achieved a root shell and the machine is solved! The root flag can be found in the home directory in the proof.txt file.
