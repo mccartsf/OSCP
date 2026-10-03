@@ -87,7 +87,7 @@ On a separate Linux shell we set up a remote listener to catch the server redire
 
 	nc -lvnp 80
 
-With success, we get a connection to our listener on port 80 and are logged in as the user, "prudence"
+With success, we get a connection to our listener on port 80 and are logged in as the user, "prudence." The first machine flag can be found in the user's home directory. 
 # Privilege Escalation
 
 As prudence we run through common privilege escalation locations and hit a suspicious value when checking prudence's sudo privileges. 
