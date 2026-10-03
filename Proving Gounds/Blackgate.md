@@ -120,7 +120,7 @@ With the authorization key, we try running the sudo redis-status command again
 	Authorization Key: ClimbingParrotKickingDonkey321
 
 
-As the command output runs we notice that the output does not come to a compelte finish and allows us to input more commands. Since the commands appear to be running as root, we attempt to open a bash shell with 
+As the command output runs we notice that the output does not come to a complete finish and allows us to input more commands. Since the commands appear to be running as root, we attempt to open a bash shell with 
 
 	!/bin/bash
 
