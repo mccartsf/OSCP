@@ -95,3 +95,39 @@ With success, we are able to get a foothold on the target machine as the "remi" 
 
 The local flag can be found in the home directory.
 # Privilege Escalation
+
+With foothold on the machine, we can attempt to escalate our privileges. 
+
+Since we already have an opening with the available SSH keys in the "keys" directory, we are going to attempt escalation there. 
+
+First, since we have the "root" key we can attempt to login to the root user with the below command and key:
+
+	ssh -i root root@targetIP
+
+However, we can check if there are any other alias' that the current user has that we can run this command from. 
+
+	alis 
+Output:
+	alias ls='ls --color=auto'
+	alias root='ssh -l root -i ~/.ssh/keys/root 127.0.0.1'
+
+According to the output there is an alias, "root" that can be accessed with the given command
+
+	ssh -l root -i ~/.ssh/keys/root 127.0.0.1
+
+Unfortunately, we do not receive any connection as the Authentication failures reach too many attempts. 
+
+According to a helpful post on serverfault -> https://serverfault.com/questions/36291/how-to-recover-from-too-many-authentication-failures-for-user-root?source=post_page-----2609d211e473-----------------------------------------
+
+The error we receive for too many authentication failures occurs because there are too many active keys in the directory of which we are attempting to login from. 
+
+To mitigate this, we can use the parameter 
+
+	-o IdentitiesOnly=yes
+
+The full command looks like
+
+	root -o IdentitiesOnly=yes
+
+
+Success! With the above command we have achieved a root shell. The proof.txt file can be found in the local home directory. The machine is now solved.
