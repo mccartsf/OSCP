@@ -4,7 +4,7 @@
 
 # Objective
 
-Removed test script.
+Attempt 3
 # Information Gathering 
 
 Nmap Scans:
