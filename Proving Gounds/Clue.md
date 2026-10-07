@@ -4,7 +4,7 @@
 
 # Objective
 
-This is a test for the new install.
+Removed test script.
 # Information Gathering 
 
 Nmap Scans:
