@@ -1,0 +1,669 @@
+/* ===== FONTS ===== */
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Ruslan+Display&family=Marmelad&family=Lobster&family=Yeseva+One&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ===== DARK THEME (Pumpkin Night) ===== */
+.theme-dark {
+  /* Backgrounds */
+  --background-primary: #1a1410;
+  --background-primary-alt: #221a14;
+  --background-secondary: #221a14;
+  --background-secondary-alt: #2a2018;
+  --background-modifier-border: #3a2a1c;
+  --background-modifier-form-field: #221a14;
+  --background-modifier-form-field-highlighted: #2a2018;
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.6);
+  --background-modifier-success: #ff7518;
+  --background-modifier-error: #8a2020;
+  --background-modifier-error-hover: #a03030;
+  --background-modifier-hover: rgba(255, 117, 24, 0.08);
+
+  /* Text */
+  --text-normal: #f0d8b8;
+  --text-muted: #b89878;
+  --text-faint: #8a6a4a;
+  --text-accent: #ff7518;
+  --text-accent-hover: #ff8c2a;
+  --text-on-accent: #1a1410;
+  --text-error: #d4874c;
+  --text-warning: #ff7518;
+  --text-selection: rgba(255, 117, 24, 0.3);
+  --text-highlight-bg: rgba(255, 117, 24, 0.25);
+
+  /* Interface */
+  --interactive-normal: #221a14;
+  --interactive-hover: #2a2018;
+  --interactive-accent: #ff7518;
+  --interactive-accent-hover: #ff8c2a;
+  --interactive-accent-rgb: 255, 117, 24;
+
+  /* Scrollbar */
+  --scrollbar-bg: #221a14;
+  --scrollbar-thumb-bg: #ff7518;
+  --scrollbar-active-thumb-bg: #ff8c2a;
+
+  /* Graph */
+  --graph-line-color: #3a2a1c;
+  --graph-node-color: #ff7518;
+  --graph-node-tag-color: #ff8c2a;
+  --graph-node-attachment-color: #d45a08;
+  --graph-node-unresolved-color: #3a2a1c;
+
+  /* Headings — pumpkin to candle gradient */
+  --h1-color: #ff7518;
+  --h2-color: #e86810;
+  --h3-color: #d45a08;
+  --h4-color: #c04a00;
+  --h5-color: #a83a00;
+  --h6-color: #8a2a00;
+  --h1-size: 2.2em;
+  --h2-size: 1.8em;
+  --h3-size: 1.5em;
+  --h4-size: 1.25em;
+  --h5-size: 1.1em;
+  --h6-size: 1em;
+  --h1-weight: 700;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+
+  /* All Hallows' Eve custom colors */
+  --halloween-pumpkin: #ff7518;
+  --halloween-pumpkin-dark: #d45a08;
+  --halloween-candle: #ffb347;
+  --halloween-shadow: #0f0a08;
+  --halloween-cream: #f0d8b8;
+}
+
+/* ===== LIGHT THEME (Pumpkin Day) ===== */
+.theme-light {
+  /* Backgrounds */
+  --background-primary: #f0e4d0;
+  --background-primary-alt: #e8dcc4;
+  --background-secondary: #e8dcc4;
+  --background-secondary-alt: #e0d0b4;
+  --background-modifier-border: #d4bc98;
+  --background-modifier-form-field: #f0e4d0;
+  --background-modifier-form-field-highlighted: #e8dcc4;
+  --background-modifier-box-shadow: rgba(60, 30, 10, 0.1);
+  --background-modifier-success: #e86810;
+  --background-modifier-error: #8a2020;
+  --background-modifier-error-hover: #a03030;
+  --background-modifier-hover: rgba(200, 100, 20, 0.1);
+
+  /* Text */
+  --text-normal: #3a2210;
+  --text-muted: #6a4a28;
+  --text-faint: #9a7a58;
+  --text-accent: #d45a08;
+  --text-accent-hover: #e86810;
+  --text-on-accent: #f0e4d0;
+  --text-error: #8a2020;
+  --text-warning: #d45a08;
+  --text-selection: rgba(212, 90, 8, 0.25);
+  --text-highlight-bg: rgba(232, 104, 16, 0.2);
+
+  /* Interface */
+  --interactive-normal: #e0d0b4;
+  --interactive-hover: #d4c0a0;
+  --interactive-accent: #d45a08;
+  --interactive-accent-hover: #e86810;
+  --interactive-accent-rgb: 212, 90, 8;
+
+  /* Scrollbar */
+  --scrollbar-bg: #e8dcc4;
+  --scrollbar-thumb-bg: #d45a08;
+  --scrollbar-active-thumb-bg: #e86810;
+
+  /* Graph */
+  --graph-line-color: #d4bc98;
+  --graph-node-color: #d45a08;
+  --graph-node-tag-color: #e86810;
+  --graph-node-attachment-color: #a83a00;
+  --graph-node-unresolved-color: #d4bc98;
+
+  /* Headings — pumpkin to candle gradient (light) */
+  --h1-color: #d45a08;
+  --h2-color: #c04a00;
+  --h3-color: #a83a00;
+  --h4-color: #903000;
+  --h5-color: #782800;
+  --h6-color: #602000;
+  --h1-size: 2.2em;
+  --h2-size: 1.8em;
+  --h3-size: 1.5em;
+  --h4-size: 1.25em;
+  --h5-size: 1.1em;
+  --h6-size: 1em;
+  --h1-weight: 700;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+
+  /* All Hallows' Eve custom colors (light) */
+  --halloween-pumpkin: #d45a08;
+  --halloween-pumpkin-dark: #a83a00;
+  --halloween-candle: #e8a040;
+  --halloween-shadow: #f0e4d0;
+  --halloween-cream: #3a2210;
+
+  /* Code syntax highlighting (light theme) — high contrast */
+  --code-normal: #000000;
+  --code-comment: #808080;
+  --code-function: #0000dd;
+  --code-keyword: #dd0000;
+  --code-string: #008800;
+  --code-value: #dd6600;
+  --code-operator: #333333;
+  --code-tag: #cc0000;
+  --code-property: #6600cc;
+  --code-important: #dd0000;
+  --code-constant: #0044aa;
+}
+
+/* ===== HARDCODED ACCENT COLORS ===== */
+.theme-dark,
+.theme-light {
+  --interactive-accent: #ff7518;
+  --interactive-accent-hover: #ff8c2a;
+  --interactive-accent-rgb: 255, 117, 24;
+  --text-accent: #ff7518;
+  --text-accent-hover: #ff8c2a;
+  --graph-node-color: #ff7518;
+  --graph-node-tag-color: #ff8c2a;
+  --graph-node-attachment-color: #d45a08;
+  --scrollbar-thumb-bg: #ff7518;
+  --scrollbar-active-thumb-bg: #ff8c2a;
+  --button-bg-color: #ff7518;
+  --button-text-color: #1a1410;
+  --button-hover-bg-color: #ff8c2a;
+  --button-hover-text-color: #1a1410;
+  --tab-outline-color: #ff7518;
+}
+
+/* ===== GENERAL STYLES ===== */
+body {
+  font-family: "Forum", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-normal);
+  background-color: var(--background-primary);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* ===== HEADINGS (Ruslan Display) ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ruslan Display", "Forum", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  font-size: var(--h1-size);
+  color: var(--h1-color);
+  border-bottom: 2px solid var(--h1-color);
+  padding-bottom: 0.2em;
+}
+
+h2 {
+  font-size: var(--h2-size);
+  color: var(--h2-color);
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 0.15em;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  color: var(--h3-color);
+}
+h4 {
+  font-size: var(--h4-size);
+  color: var(--h4-color);
+}
+h5 {
+  font-size: var(--h5-size);
+  color: var(--h5-color);
+}
+h6 {
+  font-size: var(--h6-size);
+  color: var(--h6-color);
+}
+
+/* ===== PARAGRAPHS ===== */
+p {
+  margin-block-start: 0.8em;
+  margin-block-end: 0.8em;
+}
+
+strong {
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+em {
+  color: var(--halloween-candle);
+  font-style: italic;
+}
+
+/* ===== HIGHLIGHT ===== */
+mark,
+.cm-highlight {
+  background-color: var(--text-highlight-bg);
+  color: var(--text-normal);
+  padding: 0 0.2em;
+  border-radius: 2px;
+}
+
+::selection {
+  background-color: var(--text-selection);
+  color: var(--text-on-accent);
+}
+
+/* ===== BLOCKQUOTES (Marmelad) ===== */
+blockquote {
+  background-color: var(--background-primary-alt);
+  border-left: 4px solid var(--halloween-pumpkin);
+  padding: 0.8em 1.2em;
+  margin: 1em 0;
+  color: var(--text-muted);
+  border-radius: 0 4px 4px 0;
+  font-family: "Marmelad", "Forum", Georgia, serif;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+blockquote p {
+  margin: 0.3em 0;
+}
+
+/* ===== CODE (JetBrains Mono) ===== */
+code,
+.cm-inline-code {
+  font-family: "JetBrains Mono", "Source Code Pro", monospace;
+  font-size: 0.9em;
+  color: var(--text-accent);
+  background-color: var(--background-modifier-border);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 1em;
+}
+
+pre code {
+  background-color: transparent;
+  color: var(--text-normal);
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ===== TABLES ===== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+thead {
+  background-color: var(--background-secondary);
+  border-bottom: 2px solid var(--interactive-accent);
+}
+
+th {
+  color: var(--text-accent);
+  font-weight: 600;
+  padding: 0.6em 0.8em;
+  text-align: left;
+  font-family: "Ruslan Display", "Forum", serif;
+}
+
+td {
+  padding: 0.5em 0.8em;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+tr:hover {
+  background-color: var(--background-secondary-alt);
+}
+
+/* ===== TABS ===== */
+.workspace-tab-header {
+  background-color: transparent;
+}
+
+.workspace-tab-header-inner {
+  color: var(--text-muted);
+  background-color: var(--background-secondary);
+  font-family: "Forum", sans-serif;
+}
+
+.workspace-tab-header.is-active {
+  background-color: var(--background-secondary-alt);
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner {
+  color: var(--text-accent);
+  border-bottom: 2px solid var(--interactive-accent);
+}
+
+.workspace-tab-header:hover .workspace-tab-header-inner {
+  color: var(--text-normal);
+}
+
+/* ===== SIDEBAR ===== */
+.workspace-leaf {
+  background-color: var(--background-secondary);
+}
+
+.workspace-leaf-content .nav-header {
+  background-color: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-family: "Forum", sans-serif;
+}
+
+.nav-file-title.is-active {
+  background-color: var(--background-secondary-alt);
+  border-left: 3px solid var(--interactive-accent);
+}
+
+.nav-file-title:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-folder-title:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-file-title,
+.nav-folder-title {
+  font-family: "Forum", sans-serif;
+}
+
+/* ===== GRAPH ===== */
+.graph-view.color-fill {
+  color: var(--graph-node-color);
+}
+
+.graph-view.color-fill-tag {
+  color: var(--graph-node-tag-color);
+}
+
+.graph-view.color-fill-attachment {
+  color: var(--graph-node-attachment-color);
+}
+
+.graph-view.color-fill-unresolved {
+  color: var(--graph-node-unresolved-color);
+}
+
+.graph-view.color-line {
+  color: var(--graph-line-color);
+}
+
+.graph-view.color-arrow {
+  color: var(--graph-line-color);
+}
+
+.graph-view.color-text {
+  color: var(--text-normal);
+}
+
+.graph-view.color-circle {
+  color: var(--graph-node-color);
+}
+
+.graph-view.color-fill-highlight {
+  color: var(--interactive-accent);
+}
+
+.graph-view.color-line-highlight {
+  color: var(--interactive-accent);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-active-thumb-bg);
+}
+
+/* ===== CHECKBOXES ===== */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--background-primary);
+  border: 2px solid var(--background-modifier-border);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 6px;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-on-accent);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* ===== COLLAPSIBLE BLOCKS ===== */
+details {
+  background-color: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  margin: 0.8em 0;
+}
+
+summary {
+  color: var(--text-accent);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-left: 1.5em;
+  font-family: "Ruslan Display", "Forum", serif;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "🎃 ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.9em;
+}
+
+details[open] summary::before {
+  content: "👻 ";
+}
+
+details summary:hover {
+  color: var(--text-accent-hover);
+}
+
+/* ===== DIVIDERS ===== */
+hr {
+  border: none;
+  height: 24px;
+  background: none;
+  position: relative;
+  margin: 2em 0;
+}
+
+hr::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--halloween-pumpkin),
+    transparent
+  );
+  transform: translateY(-50%);
+}
+
+hr::after {
+  content: "🎃 🎃 🎃";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  letter-spacing: 4px;
+  background-color: var(--background-primary);
+  padding: 0 8px;
+}
+
+/* ===== BUTTONS ===== */
+button,
+.mod-cta {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.4em 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Forum", sans-serif;
+  transition: all 0.2s ease;
+}
+
+button:hover,
+.mod-cta:hover {
+  background-color: var(--button-hover-bg-color);
+  color: var(--button-hover-text-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 12px rgba(255, 117, 24, 0.5);
+}
+
+/* Settings */
+.vertical-tab-nav-item.is-active {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  font-family: "Forum", sans-serif;
+}
+
+.vertical-tab-nav-item.is-active:hover {
+  background-color: var(--interactive-accent-hover);
+  color: var(--text-on-accent);
+}
+
+.checkbox-container.is-enabled {
+  background-color: var(--interactive-accent);
+}
+
+.checkbox-container.is-enabled:hover {
+  background-color: var(--interactive-accent-hover);
+}
+
+.flair.mod-pop {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+/* ===== LISTS ===== */
+ul,
+ol {
+  padding-left: 1.5em;
+}
+
+ul li::marker {
+  color: var(--interactive-accent);
+}
+
+ol li::marker {
+  color: var(--text-accent);
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ===== STATUS BAR ===== */
+.status-bar {
+  background-color: var(--background-secondary);
+  border-top: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  font-family: "Forum", sans-serif;
+}
+
+.status-bar-item {
+  color: var(--text-muted);
+}
+
+.status-bar-item:hover {
+  color: var(--text-normal);
+}
+
+/* ===== SEARCH ===== */
+.search-result-file-match {
+  background-color: var(--text-highlight-bg);
+}
+
+.search-result-file-matched-text {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+/* ===== INTERFACE FONT (Forum) ===== */
+.workspace-ribbon,
+.workspace-tab-header,
+.nav-file-title,
+.nav-folder-title,
+.menu,
+.modal,
+.setting-item,
+.status-bar,
+.prompt,
+.suggestion-item,
+.dropdown,
+input[type="text"],
+input[type="search"],
+textarea {
+  font-family: "Forum", sans-serif;
+}

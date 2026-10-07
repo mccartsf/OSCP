@@ -4,7 +4,7 @@
 
 # Objective
 
-This is a test
+This is a test for the new install.
 # Information Gathering 
 
 Nmap Scans:
