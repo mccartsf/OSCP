@@ -65,7 +65,12 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Available ports: ==🟡22, 80, 9090==
 
-
+Gobuster Results:
+  
+img                  (Status: 301) [Size: 314] [--> http://192.168.139.10/img/]  
+js                   (Status: 301) [Size: 313] [--> http://192.168.139.10/js/]  
+css                  (Status: 301) [Size: 314] [--> http://192.168.139.10/css/]  
+Progress: 100000 / 100000 (100.00%)
 # Service Enumeration
 
 
