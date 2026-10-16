@@ -7,6 +7,21 @@ Shell Upgrade (Once a foothold is established)
 
 	python -c 'import pty; pty.spawn("/bin/bash")'
 
-Port Forwarding 
+#### Python Environment :
 
+Create a python virtual environment
+
+	python3 -m venv .venv
+	
+Check which environment is running
+
+	which python
+
+Activate the Environment
+
+	source .venv/bin/activate
+
+Deactivate the environment 
+
+	deactivate
 
