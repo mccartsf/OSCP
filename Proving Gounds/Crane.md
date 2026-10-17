@@ -91,3 +91,22 @@ With success, we are able to achieve a foothold on our local machine logged in a
 The local.txt file can be found in the home directory of the user.
 
 # Privilege Escalation
+
+Logged in as "www-data" we begin searching for an eligible privilege escalation technique. 
+
+Luckily, the current user is able to run the "service" command after running 
+
+	sudo -l
+Results:
+	/usr/sbin/service
+
+
+Using this knowlege we can check GTFOBins for potential escalation command. 
+
+According to GTFOBins, we can use the "service" command in a directory transversal attack to open a root shell. 
+
+	sudo service ../../bin/sh
+
+*This  command took several attempts at working as originally the command was being run as "sudo /usr/bin/service." However, this did not directly work as intended.*
+
+With success, we gain a root shell after running the command! The root flag can be found in the root home directory. The machine is now solved!
