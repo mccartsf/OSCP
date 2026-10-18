@@ -38,7 +38,23 @@ After viewing all of the files in the filemanager, we learn in the changelog.txt
 
 # Service Enumeration
 
+According to CVE-2023-29657, the current version of EXtplorer is vulnerable to insecure permissions and allows files to be uploaded directly to the file manager. Being that many of the files are .php types, we can attempt uploading a file with a reverse shell script in php.
 
+	touch exploit.php
+
+	vim exploit.php
+
+For this payload we added a PHP Pentest Monkey reverse shell from RevShells as other PHP shell attempts failed.
+
+With success, we gain a foothold as the user, "www-data" on a new shell. We can grant more stability by running
+
+	bash -i
+
+Now that we have a more stable shell, we can attempt to sign in to the "dora" account with our known password. 
+
+	su dora 
+
+Successfully, our cracked password works and we are now signed in as the dora user.
 
 # Privilege Escalation
 
