@@ -16,6 +16,9 @@ Flag Descriptions:
 - -type f: search for regular file
 - 2>dev/null: errors will be deleted automatically
 
+Check the User group:
+
+	id
 
 ## Cron Jobs
 
