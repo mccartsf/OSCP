@@ -104,10 +104,10 @@ drwxr-xr-x  3 root root 4096 Jun 13  2023 .local
 pwd
 /var/www/html
 cat /root/proof.txt
-1400207fd92a809c64088b690aee27af
 
-Flag -> ==1400207fd92a809c64088b690aee27af==
-# 
+
+Flag can be found in the root home directory. The machine is now solved!
+
 
 
 

@@ -87,7 +87,7 @@ With a listener set up on our local host on port 443, we achieve our foothold on
 
 app@ubuntu:~$ cat local.txt
 cat local.txt
-==0fa9a8213fd1aac4e63a04f268fdb5cc==
+
 
 # Privilege Escalation
 
@@ -124,7 +124,7 @@ proof.txt
 snap
 root@ubuntu:/root# cat proof.txt
 cat proof.txt
-==c9e7682c9d62c67a57d9627523c527d3==
+
 
 
 We have now successfully solved the machine!

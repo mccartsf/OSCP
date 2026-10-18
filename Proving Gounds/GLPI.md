@@ -151,9 +151,7 @@ Let's try logging into the server through ssh with this credential:
 
 		ssh betty@192.168.178.242 
 
-Success, we are able to login and can now find our first flag in the home directory:
-
-==71742999d3e5e9809c8481419932d8c2==
+Success, we are able to login and can now find our first flag in the home directory.
 # Privilege Escalation
 
 Now that we have a good foothold, we can start to escalate our privileges.
@@ -186,8 +184,4 @@ Moving forward, we now attempt to add the RCE code that will make the exploit wo
 
 		bash -p
 
-With success, we are able to achieve a root shell. The root flag can be found in the /root/proof.txt file:
-
-==b4babaecece1e07df0e0d91b5fa2eacb==
-
-Success, we have solved the machine!
+With success, we are able to achieve a root shell. The root flag can be found in the /root/proof.txt file. Success, we have solved the machine!

@@ -136,4 +136,4 @@ Success! We have gained root access on the machine:
 		snap
 		cat proof.txt
 		
-==8516aac2a0d6aad3602451d8d03ad078==
+Flag can be found in the root home directory. The machine is now solved!

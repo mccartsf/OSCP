@@ -120,10 +120,9 @@ ls
 proof.txt  snap
 root@detection:/root# cat proof.txt     
 cat proof.txt
-==2902eb818e8d26da2e46586d631ea7c3==
 
 
-In the proof.txt file we find the root flag solve the lab!
+In the proof.txt file we find the root flag to solve the lab!
 
 
 

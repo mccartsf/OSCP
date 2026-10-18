@@ -103,9 +103,7 @@ $password = "best&_#Password@2021!!!";
 
 With the above login, we are able to successfully login to the "outdated" machine. 
 
-In the home directory we find our first user flag in the local.txt file:
-
-==best&_#Password@2021!!!==
+In the home directory we find our first user flag in the local.txt file.
 
 
 # Privilege Escalation
@@ -149,7 +147,8 @@ root@outdated:/# cd /root/
 root@outdated:~# ls
 app  index.html  proof.txt  snap  webmin_1.996_all.deb
 root@outdated:~# cat proof.txt 
-==278ce5b5ee8d0e51ee1f5b4d52764132==
+
+
 
 
 

