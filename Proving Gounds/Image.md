@@ -39,3 +39,16 @@ After uploading the payload, the website pauses and we receive a shell on our lo
 The "local.txt" flag can be found in the home directory.
 # Privilege Escalation
 
+Now that we have a foothold on the machine we can attempt to search for privilege escalation points. 
+
+Checking the SUID available files and commands:
+
+	find / -type f -perm -4000 2>/dev/null
+
+Using the above command we learn that the "strace" command SUID bit is currently set. Knowing this, we can check GTFOBins for potential escalation commands. Luckily, there is an escalation technique we can try with the SUID bit set:
+
+	strace -o /dev/null /bin/sh -p
+
+Success! With the above command, we are escalated to a privileged root shell and have solved the machine. 
+
+The root flag can be found in the /root directory of the machine.
