@@ -37,5 +37,16 @@ Luckily, there is a known vulnerability,  CVE-2022-35914, that can help with exp
 
 # Service Enumeration
 
+To perform the exploit on the machine we need to follow the proof of concept found on Mayfly's Github (credit to author) -> https://mayfly277.github.io/posts/GLPI-htmlawed-CVE-2022-35914/
+
+This detailed explanation describes a method of attack that makes use of command injection within the htLawed function due to the similar format with the php "exec" command format. 
+
+In this machine, the only diffference we need to make when running the exploit is that directed IP address when adding our commands to the website. 
+
+When clicking on the "process" button, the website directly tries to attempt and send the GET request to the http://192.168.XXX.XXX/htmLawedTest.php  site. However, this request need to be intercepted with Burp Suite and re-routed to http://192.168.XXX.XXX/. 
+
+With this, we are able to post a reverse shell command and land a foothold on the target machine.
+
+The local flag can be found in the user's home directory. 
 
 # Privilege Escalation
