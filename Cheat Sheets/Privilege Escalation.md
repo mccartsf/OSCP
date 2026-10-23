@@ -27,6 +27,18 @@ Find all available running cron jobs
 	cat /etc/cron
 
 
+## Shell Upgrades
 
+Upgrade from shell to bash
+
+	SHELL=/bin/bash script -q /dev/null
+
+Upgrade with Python import
+
+	python -c 'import pty; pty.spawn("/bin/bash")'
+
+Full Interactive TTY
+
+	stty raw -echo && fg
 
 
