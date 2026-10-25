@@ -1,12 +1,4 @@
 
-
-
-# Introduction
-
-
-# Objective
-
-
 # Information Gathering 
 
 
