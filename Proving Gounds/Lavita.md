@@ -4,10 +4,10 @@ Nmap Results:
 
 
 
-Gobuster:
+Gobuster Results:
 
 
 # Service Enumeration
 
-TBC.
+Environment Version Information: Laravel 8.4.0
 # Privilege Escalation
