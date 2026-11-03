@@ -1,4 +1,4 @@
-
+SHEL
 ## SUID 
 
 Find all available SUID files in the system
