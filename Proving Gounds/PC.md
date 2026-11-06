@@ -49,6 +49,9 @@ The target IP address does not provide any connections directly, however we are 
 
 # Service Enumeration
 
+Since we have a direct foothold on the machine, we can directly look for opportunities to escalate out privileges. 
+
+On port 8000, we are logged in as, "user@pc"
 
 
 # Privilege Escalation
