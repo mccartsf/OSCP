@@ -67,7 +67,7 @@ Upon looking over the code more thoroughly, we see that is it being directly run
 Researching the rcp.py code shows that there is a known CVE that allows for remote code execution -> CVE-2022-35411
 
 
-We can use the exploit code from this public Github to potentially escalate our privileges -> https://github.com/ehtec/rpcpy-exploit
+We can use the exploit code from this public GitHub to potentially escalate our privileges -> https://github.com/ehtec/rpcpy-exploit
 
 In order to get the exploit file directory on our target machine we run
 
