@@ -1,5 +1,51 @@
 
 # Information Gathering 
+Nmap Scan Results:
+
+PORT     STATE SERVICE                VERSION  
+22/tcp   open  ssh                    OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)  
+| ssh-hostkey:    
+|   3072 51:56:a7:34:16:8e:3d:47:17:c8:96:d5:e6:94:46:46 (RSA)  
+|   256 fe:76:e3:4c:2b:f6:f5:21:a2:4d:9f:59:52:39:b9:16 (ECDSA)  
+|_  256 2c:dd:62:7d:d6:1c:f4:fd:a1:e4:c8:aa:11:ae:d6:1f (ED25519)  
+9090/tcp open  hadoop-tasktracker     Apache Hadoop  
+|_http-title: Site doesn't have a title (text/html).  
+| hadoop-tasktracker-info:    
+|_  Logs: jive-ibtn jive-btn-gradient  
+|_http-favicon: Unknown favicon MD5: E4888EE8491B4EB75501996E41AF6460  
+| hadoop-datanode-info:    
+|_  Logs: jive-ibtn jive-btn-gradient  
+| http-methods:    
+|_  Supported Methods: GET HEAD POST OPTIONS  
+9091/tcp open  ssl/hadoop-tasktracker Apache Hadoop  
+| hadoop-datanode-info:    
+|_  Logs: jive-ibtn jive-btn-gradient  
+| http-methods:    
+|_  Supported Methods: GET HEAD POST OPTIONS  
+|_http-favicon: Unknown favicon MD5: E4888EE8491B4EB75501996E41AF6460  
+|_http-title: Site doesn't have a title (text/html).  
+| ssl-cert: Subject: commonName=localhost  
+| Subject Alternative Name: DNS:localhost, DNS:*.localhost  
+| Issuer: commonName=localhost  
+| Public Key type: rsa  
+| Public Key bits: 2048  
+| Signature Algorithm: sha256WithRSAEncryption  
+| Not valid before: 2024-06-28T07:02:39  
+| Not valid after:  2029-06-27T07:02:39  
+| MD5:     41ee f1c1 0cef c4b0 2436 f5e7 75f4 b064  
+| SHA-1:   c90c b82e 0547 56be 1f7b adb4 4a3a 5de7 c177 a4d3  
+|_SHA-256: e282 23c6 8fe9 87f6 ad6e 1e4b 7232 b2f7 cf39 66f4 8be1 f46e 5a73 8b85 7ec7 5d52  
+| hadoop-tasktracker-info:    
+|_  Logs: jive-ibtn jive-btn-gradient  
+|_ssl-date: TLS randomness does not represent time  
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+==🟡Available Ports: 22, 9090, 9091==
+
+Gobuster results:
+Error received, connection timed out.
+
+Port 9090 open to a "Openfire Admin Console." The currently running version of Openfire is v4.7.3. After researching, this version is linked directly to CVE-2023-32315 and is vulnerable to remote code execution (RCE).
 
 
 # Service Enumeration
