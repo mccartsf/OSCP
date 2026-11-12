@@ -156,46 +156,7 @@ After running, we received a root shell with the final flag!!
 ![](Pasted%20image%2020260714180317.png)
 
 
-## HTB Question Checklist
 
-1)  How many TCP ports are open on the remote host?
-
-	2
-
-2) Which Python library/command line application is the web-application using to generate URLs?
-
-	Searcher
-
-
-3) What version of Searcher is running on Busqueda?
-
-	2.4.2
-
-4) Which HTTP POST parameter of the web-application vulnerable to code injection?
-
-	 query
-
-5) Submit the flag located in the svc user's home directory.
-
-	dd60f8da363ef209c228ab8df96e5fdc
-
-6) What is the password for cody user present on Busqueda?
-
-	jh1usoih2bkjaspwe92
-
-7) What is the full path of the Python script can be run with root privileges by the svc user on the box?
-
-	/opt/scripts/system-checkup.py
-
-8) What is the password for the administrator user on the Gitea application?
-
-	yuiu1hoiu4i5ho1uh
-
-9) What is the name of the script that is called by `system-checkup.py` using a relative path?
-
-10) Submit the flag located in the root user's home directory.
-
-	49e23394ef13e028089c7773a1323ab7
 
 
 
