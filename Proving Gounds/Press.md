@@ -51,7 +51,7 @@ After attempting the above credentials, the successful login was "admin/password
 
 # Service Enumeration
 
-Since we have a login on the FlatPress site as an admin, we can research potential vulnerabilities known on our currention site version.
+Since we have a login on the FlatPress site as an admin, we can research potential vulnerabilities known on our current site version.
 
 According to multiple sources, Flatpress version 1.2.1 is vulnerable to remote code execution.
 We can follow the steps explained in this proof of concept(PoC) by *s4n-h4xor* -> https://github.com/flatpressblog/flatpress/issues/152
@@ -85,7 +85,7 @@ With a foothold on the target machine we can now evaluate common privilege escal
 
 Luckily, the currently logged in user is able to run the *apt-get* command with super user privileges. 
 
-On GTFOBins, we can find useful privilege escaltion examples using the *apt-get* command for escaltion.
+On GTFOBins, we can find useful privilege escalation examples using the *apt-get* command for escalation.
 
 Specifically, we are looking for the best option that allows us to spawn a shell as the root user.
 
